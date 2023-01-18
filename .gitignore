@@ -1,0 +1,9 @@
+# complied output
+**dist
+**node_modules
+
+# os
+.DS_Store
+
+#IDE
+.vscode/*

@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+    volumes:
+    - ./backend:/app
+    - /app/node_modules
+    - /app/dist
+    ports:
+      - 8080:3000
+    env_file: .env
+    depends_on:
+      - db
+  db:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    env_file: .env
+
+    volumes:
+      - api-db:/var/lib/postgresql/data
+
+volumes:
+  api-db:
